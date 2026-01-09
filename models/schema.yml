@@ -1,0 +1,74 @@
+
+version: 2
+
+sources:
+    - name: raw # alias du dataset
+      schema: data_trainlytics #Nom exact du dataset dans BigQuery
+      description: sources de données
+      tables:
+        - name: strava #alias de la table
+          identifier: raw_strava #Nom exact de la table dans BigQuery
+          description: ensemble de données relevées générales sur Strava
+        - name: garmin
+          identifier: raw_garmin
+          description : ensemble de données relevées générales sur Garmin
+        - name: whoop
+          identifier: raw_whoop
+          description : ensemble de données générales de santé par jour sur Whoop
+models:
+    - name: stg_strava
+      description: table Strava nettoyée
+      columns:
+        - name: Date
+          description: primary key of the table
+          tests:
+              - unique
+              - not_null 
+    - name: stg_garmin
+      description: table Garmin nettoyée
+      columns:
+        - name: Date
+          description: primary key of the table
+          tests:
+              - unique
+              - not_null   
+    - name: stg_whoop
+      description: table Whoop nettoyée
+      columns:
+        - name: Date
+          description: primary key of the table
+          tests:
+              - unique
+              - not_null                   
+    - name: int_strava_agregation_by_date
+      description: table Strava aggregée par date
+      columns:
+        - name: Date
+          description: primary key of the table
+          tests:
+              - unique
+              - not_null  
+    - name: int_garmin_agregation_by_date
+      description: table Garmin aggregée par date
+      columns:
+        - name: Date
+          description: primary key of the table
+          tests:
+              - unique
+              - not_null           
+    - name: int_whoop_clean_datre
+      description: table Whoop sans doublon de dates
+      columns:
+        - name: Date
+          description: primary key of the table
+          tests:
+              - unique
+              - not_null            
+    - name: int_joining_strava_garmin_whoop
+      description: Jointure des 3 tables
+      columns:
+        - name: Date
+          description: primary key of the table
+          tests:
+              - unique
+              - not_null 
