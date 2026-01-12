@@ -15,6 +15,9 @@ sources:
         - name: whoop
           identifier: raw_whoop
           description : ensemble de données générales de santé par jour sur Whoop
+        - name: whoop_train
+          identifier: raw_whoop_train
+          description : ensemble de données générales d'efforts par jour sur Whoop  
 models:
     - name: stg_strava
       description: table Strava nettoyée
@@ -39,7 +42,15 @@ models:
           description: primary key of the table
           tests:
               - unique
-              - not_null                   
+              - not_null    
+    - name: stg_whoop_train
+      description: table Whoop efforts nettoyée
+      columns:
+        - name: Date
+          description: primary key of the table
+          tests:
+              - unique
+              - not_null                           
     - name: int_strava_agregation_by_date
       description: table Strava aggregée par date
       columns:
