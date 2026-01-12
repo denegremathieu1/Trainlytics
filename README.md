@@ -15,7 +15,7 @@ Outils de collectes massives de données :
 DATASET 
 
 Description :
-Exports csv de données personnelles Strava, Garmin et Whoop , du 20 novembre 2022 au 05 novembre 2025
+Exports csv de données personnelles Strava, Garmin et Whoop , sur 3 ans de 2023 à 2026
 
 6 tables de données & Colonnes clés :
 Score de récupération % : indicateur de récupération
